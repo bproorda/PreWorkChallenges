@@ -8,7 +8,8 @@ namespace PreWorkChallenges
         {
             Console.WriteLine("Hello World!");
             //ArrayMax();
-            CheckLeapYear();
+            //CheckLeapYear();
+            CheckPerfectSequenceHandler();
         }
         public static void ArrayMax()
         {
@@ -58,6 +59,38 @@ namespace PreWorkChallenges
                 answer = $"No, {testYear} was not a Leap Year!";
             }
             Console.WriteLine(answer);
+        }
+        public static void CheckPerfectSequenceHandler()
+        {
+            int[] perfectArray = new int[3] { 1, 3, 2 };
+            int[] notSoPerfectArray = new int[3] { 1, -3, 2 };
+            string perfectArrayString = String.Join(", ", perfectArray);
+            string notSoPerfectArrayString = String.Join(", ", notSoPerfectArray);
+
+            Console.WriteLine($"[{notSoPerfectArrayString}] {CheckPerfectSequence(notSoPerfectArray)}");
+            Console.WriteLine($"[{perfectArrayString}] {CheckPerfectSequence(perfectArray)}");
+        }
+        public static string CheckPerfectSequence(int[] array)
+        {
+            string answer = "is not a perfect sequence";
+            int sum = 0;
+            int product = 1;
+            bool negTest = true;
+            int length = array.Length;
+            for (int i = 0; i < length; i++)
+            { 
+                if(array[i] <= 0)
+                {
+                    negTest = false; 
+                }
+                sum += array[i];
+                product = product * array[i];
+            }
+            if(negTest == true && sum == product)
+            {
+                answer = "is prefect sequence";
+            }
+            return answer;
         }
     
     }
