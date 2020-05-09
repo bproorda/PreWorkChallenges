@@ -6,10 +6,14 @@ namespace PreWorkChallenges
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            //ArrayMax();
-            //CheckLeapYear();
+            Console.WriteLine("Challenge 01: Array Max Result");
+            ArrayMax();
+            Console.WriteLine("Challenge 02: Leap Year Calculator");
+            CheckLeapYear();
+            Console.WriteLine("Challenge 03: Perfect Sequence");
             CheckPerfectSequenceHandler();
+            Console.WriteLine("Challenge 04: Sum of Rows");
+            SumOfRowsHandler();
         }
         public static void ArrayMax()
         {
@@ -88,7 +92,33 @@ namespace PreWorkChallenges
             }
             if(negTest == true && sum == product)
             {
-                answer = "is prefect sequence";
+                answer = "is a prefect sequence";
+            }
+            return answer;
+        }
+        public static void SumOfRowsHandler()
+        {
+            int[,] myArray = new int[3, 5] { { 1, 2, 3, 4, 5 }, { 6, 7, 8, 9, 10 }, { 11, 12, 13, 14, 15 } };
+            int[] result = SumOfRows(myArray);
+            string resultString = String.Join(", ", result);
+            Console.WriteLine($"[{resultString}]");
+        }
+
+        public static int[] SumOfRows(int[,] inputArray)
+        {
+            int lengthOuter = inputArray.GetLength(0);
+            int lengthInner = inputArray.GetLength(1);
+            int[] answer = new int[lengthOuter];
+            int sum = 0;
+
+            for (int i = 0; i < lengthOuter; i++)
+            {
+                sum = 0;
+                for (int j = 0; j < lengthInner; j++)
+                {
+                    sum += inputArray[i, j];
+                }
+                answer[i] = sum;
             }
             return answer;
         }
